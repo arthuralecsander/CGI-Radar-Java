@@ -358,13 +358,13 @@ public class CGI extends JPanel implements MouseWheelListener {
         int ox1, oy1, ox2, oy2, ox3, oy3;
         int xr1 = 0, yr1 = 0, xr2 = 0, yr2 = 0, xr3 = 0, yr3 = 0;
         int x1f = 0, y1f = 0, x2f = 0, y2f = 0, x3f = 0, y3f = 0;
-        
+
         ox1 = 10;
         oy1 = 0;
-        
+
         ox2 = 0;
         oy2 = 0;
-        
+
         ox3 = 0;
         oy3 = 0;
 
@@ -389,8 +389,7 @@ public class CGI extends JPanel implements MouseWheelListener {
             yr2 = y2f + cpy;
             xr3 = x3f + cpx;
             yr3 = y3f + cpy;
-            aviaoPlotado(xr1, yr1, xr2, yr2, xr3, yr3, g,cor);
-            System.out.printf("X1: %d\nY1: %d\nX2: %d\nY2: %d\nX3: %d\nY3: %d\n", xr1, yr1, xr2, yr2, xr3, yr3);
+            aviaoPlotado(xr1, yr1, xr2, yr2, xr3, yr3, g, cor);
 
         }
         if (cpx == 0 && status == 'D') {
@@ -408,8 +407,7 @@ public class CGI extends JPanel implements MouseWheelListener {
             xr3 = x3f + cpx;
             yr3 = y3f + cpy;
 
-            aviaoPlotado(xr1, yr1, xr2, yr2, xr3, yr3, g,cor);
-            System.out.printf("X1: %d\nY1: %d\nX2: %d\nY2: %d\nX3: %d\nY3: %d\n", xr1, yr1, xr2, yr2, xr3, yr3);
+            aviaoPlotado(xr1, yr1, xr2, yr2, xr3, yr3, g, cor);
         }
 
         if (cpx != 0) {
@@ -450,8 +448,7 @@ public class CGI extends JPanel implements MouseWheelListener {
                 xr3 = x3f + cpx;
                 yr3 = y3f + cpy;
 
-                aviaoPlotado(xr1, yr1, xr2, yr2, xr3, yr3, g,cor);
-                System.out.printf("X1: %d\nY1: %d\nX2: %d\nY2: %d\nX3: %d\nY3: %d\n", xr1, yr1, xr2, yr2, xr3, yr3);
+                aviaoPlotado(xr1, yr1, xr2, yr2, xr3, yr3, g, cor);
 
             }
             if (status == 'D') {
@@ -468,10 +465,8 @@ public class CGI extends JPanel implements MouseWheelListener {
                 yr2 = y2f + cpy;
                 xr3 = x3f + cpx;
                 yr3 = y3f + cpy;
-                aviaoPlotado(xr1, yr1, xr2, yr2, xr3, yr3, g,cor);
-                System.out.printf("X1: %d\nY1: %d\nX2: %d\nY2: %d\nX3: %d\nY3: %d\n", xr1, yr1, xr2, yr2, xr3, yr3);
+                aviaoPlotado(xr1, yr1, xr2, yr2, xr3, yr3, g, cor);
             }
-            System.out.printf("X1: %d\nY1: %d\nX2: %d\nY2: %d\nX3: %d\nY3: %d\n", xr1, yr1, xr2, yr2, xr3, yr3);
         }
     }
 
@@ -503,7 +498,7 @@ public class CGI extends JPanel implements MouseWheelListener {
             g.drawString("X: " + String.valueOf(x - 477), (int) x + 10, (int) y - 20);
             g.drawString("Y: " + String.valueOf(y - 500), (int) x + 10, (int) y - 30);
             g.drawString("Status: " + Status, (int) x + 10, (int) y - 40);
-            aviao(aviaoX, aviaoY, g, Status,cor);
+            aviao(aviaoX, aviaoY, g, Status, cor);
             //AviaoTest(aviaoX, aviaoY, g, Color.RED);
         } else {
             g.setColor(Color.GREEN);
@@ -512,66 +507,80 @@ public class CGI extends JPanel implements MouseWheelListener {
             g.drawString("X: " + String.valueOf(x - 477), (int) x + 10, (int) y - 20);
             g.drawString("Y: " + String.valueOf(y - 500), (int) x + 10, (int) y - 30);
             g.drawString("Status: " + Status, (int) x + 10, (int) y - 40);
-            aviao(aviaoX, aviaoY, g, Status,cor);
+            aviao(aviaoX, aviaoY, g, Status, cor);
             //AviaoTest(aviaoX, aviaoY, g, Color.GREEN);
         }
 
     }
 
     public void trajetoAZ0032(int contadorAZ1) {
-        if (contadorViaoAz1 <= 14) {
+        if (contadorViaoAz1 >= 0) {
             AZ0032X = Xaz0032[contadorViaoAz1];
             AZ0032Y = Yaz0032[contadorViaoAz1];
             AZ0032S = Saz0032[contadorViaoAz1];
             //System.out.println(Saz0032[contadorViaoAz1]);
             repaint();
-            contadorViaoAz1--;
+            System.out.println(contadorViaoAz1);
+            if (contadorViaoAz1 > 0) {
+                contadorViaoAz1--;
+            }
+
         }
         contadorAZ1 = 0;
     }
 
     public void trajetoGZ0331(int contadorGZ1) {
-        if (contadorViaoGz1 > 0) {
+        if (contadorViaoGz1 >= 0) {
             GZ0331X = Xgz0331[contadorViaoGz1];
             GZ0331Y = Ygz0331[contadorViaoGz1];
             GZ0331S = Sgz0331[contadorViaoGz1];
             //System.out.println(Sgz0331[contadorViaoGz1]);
             repaint();
-            contadorViaoGz1--;
+            if (contadorViaoGz1 > 0) {
+                contadorViaoGz1--;
+            }
         }
         contadorGZ1 = 0;
 
     }
 
     public void trajetoAZ0157(int contadorAZ2) {
-        if (contadorViaoAz2 > 0) {
+        if (contadorViaoAz2 >= 0) {
             AZ0157X = Xaz0157[contadorViaoAz2];
             AZ0157Y = Yaz0157[contadorViaoAz2];
             AZ0157S = Saz0157[contadorViaoAz2];
             repaint();
-            contadorViaoAz2--;
+            if (contadorViaoAz2 > 0) {
+                contadorViaoAz2--;
+            }
+
         }
         contadorAZ2 = 0;
     }
 
     public void trajetoGZ0667(int contadorGZ2) {
-        if (contadorViaoGz2 > 0) {
+        if (contadorViaoGz2 >= 0) {
             GZ0667X = Xgz0667[contadorViaoGz2];
             GZ0667Y = Ygz0667[contadorViaoGz2];
             GZ0667S = Sgz0667[contadorViaoGz2];
             repaint();
-            contadorViaoGz2--;
+            if (contadorViaoGz2 > 0) {
+                contadorViaoGz2--;
+            }
         }
         contadorGZ2 = 0;
     }
 
     public void trajetoLA2203(int contadorLA) {
-        if (contadorViaoLA > 0) {
+        if (contadorViaoLA >= 0) {
             LA2203X = Xla2203[contadorViaoLA];
             LA2203Y = Yla2203[contadorViaoLA];
             LA2203S = Sla2203[contadorViaoLA];
             repaint();
-            contadorViaoLA--;
+
+            if (contadorViaoLA > 0) {
+                contadorViaoLA--;
+            }
         }
         contadorLA = 0;
     }
@@ -708,7 +717,7 @@ public class CGI extends JPanel implements MouseWheelListener {
             calcX();
             repaint();
 
-            if (contadorAZ1 == 14) {
+            if (contadorViaoLA == 0) {
                 AZ0032X = Xaz0032[0];
                 AZ0032Y = Yaz0032[0];
                 AZ0157X = Xaz0157[0];
@@ -729,7 +738,7 @@ public class CGI extends JPanel implements MouseWheelListener {
                 calcY();
                 calcX();
                 repaint();
-                if (contadorAZ1 == 14) {
+                if (contadorViaoLA == 0) {
                     AZ0032X = Xaz0032[0];
                     AZ0032Y = Yaz0032[0];
                     AZ0157X = Xaz0157[0];

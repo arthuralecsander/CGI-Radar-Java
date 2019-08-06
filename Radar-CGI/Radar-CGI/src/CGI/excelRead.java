@@ -17,7 +17,7 @@ public class excelRead {
 
     public void criaVoo(LA2203[] la2203, GZ0331[] gz0331, AZ0032[] az0032, AZ0157[] az0157, GZ0667[] gz0667) throws IOException, BiffException {
 
-        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\arthu\\OneDrive\\Área de Trabalho\\Radar-CGI\\src\\files\\radar.xls"));
+        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\arthur.alecsander\\Desktop\\Radar-CGI\\src\\files\\radar.xls"));
         Sheet sheet = workbook.getSheet(0);
         int cont1 = 0;
         int cont2 = 0;
